@@ -1,0 +1,5 @@
+{
+  "DATA_ROOT": "D:\\DeepLearningData\\kaggle-digit-recognizer",
+  "MODEL_DIR": "D:\\DeepLearningData\\kaggle-digit-recognizer\\models",
+  "BATCH_SIZE": 64
+}
