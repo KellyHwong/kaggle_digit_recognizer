@@ -25,6 +25,7 @@ class LeNet5(nn.Module):
         x = x.view(-1, self.num_flat_features(x))
         x = F.relu(self.fc1(x))
         x = F.relu(self.fc2(x))
+        self.feature = x.detach()
         x = self.fc3(x)
         return x
 
