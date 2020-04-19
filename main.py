@@ -51,7 +51,6 @@ def main():
     X = X.astype(float)
     X /= 255.0
     X = torch.from_numpy(X)
-
     y = data_train[:, 0]
     y = y.astype(int)
     y = torch.from_numpy(y)
@@ -118,16 +117,16 @@ def main():
             print(f"Model of epoch {epoch+1} saved to {model_path}.")
 
     print("Step 4: Testing phase...")
-    y_test = data_test.reshape(data_test.shape[0], 1, 28, 28)
-    y_test = y_test.astype(float)
-    y_test /= 255.0
-    y_test = torch.from_numpy(y_test)
+    X_test = data_test.reshape(data_test.shape[0], 1, 28, 28)
+    X_test = X_test.astype(float)
+    X_test /= 255.0
+    X_test = torch.from_numpy(X_test)
     print(f"num_test:{num_test}")
 
     model.eval()
     final_prediction = np.ndarray(shape=(num_test, 2), dtype=int)
     for i in range(num_test):
-        X_batch = Variable(y_test[i:i+1].clone())
+        X_batch = Variable(X_test[i:i+1].clone())
         X_batch = X_batch.type(torch.FloatTensor)
         if use_gpu:
             X_batch = X_batch.cuda()
@@ -136,7 +135,7 @@ def main():
         _, pred = torch.max(batch_out, 1)
         final_prediction[i][0] = 1 + i
         final_prediction[i][1] = pred.data[0]
-        if (i + 1) % 2000 == 0:
+        if (i+1) % 2000 == 0:
             print(f"Testing: [{i+1}/{num_test}]")
 
     print("Step 5: Generating submission file...")
