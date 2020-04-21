@@ -40,7 +40,7 @@ def main():
 
     print("Step 1: Loading data...")
     data_train = pd.read_csv("data/train.csv").values
-    data_train = shuffle(data_train)  # shuffle after loading train csv
+    # data_train = shuffle(data_train)  # already shuffled by split
     data_test = pd.read_csv("data/test.csv").values
     num_all = len(data_train)  # 42000
     num_test = len(data_test)  # 28000
