@@ -71,7 +71,7 @@ def main():
         ckpt_dir, model_type, date_time)  # weights save path
     makedir_exist_ok(model_ckpt_dir)
 
-    # TODO not implement
+    # TODO not implemented
     # train_loader = torch.utils.data.DataLoader(dataset=data_train,
     #                                            batch_size=batch_size,
     #                                            shuffle=True, num_workers=4)
